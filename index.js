@@ -12,8 +12,7 @@ const today = date.toISOString().split("T")[0];
 document.getElementById("start_date").setAttribute("min", `${today}`);
 document.getElementById("end_date").setAttribute("min", `${today}`);
 
-let startTravel = "";
-let endTravel = "";
+let startTravel, endTravel;
 
 // Functions
 const startDate = (value) => {
@@ -49,7 +48,7 @@ inputs.forEach((date) => {
 });
 
 btn.addEventListener("click", () => {
-  if (startTravel && endTravel) {
+  if (startTravel >= today && endTravel >= startTravel) {
     let startPoint = new Date(startTravel);
     let endPoint = new Date(endTravel);
     let difference = endPoint.getTime() - startPoint.getTime();
@@ -59,6 +58,8 @@ btn.addEventListener("click", () => {
 
     totalPrice.innerText = `${totalNights} `;
   } else {
-    alert("Merci de renseigner une date de départ ET une date de retour !");
+    alert(
+      "Merci de renseigner une date de départ au moins égale à celle d'aujourd'hui ET une date de retour ultérieure à la date de départ !"
+    );
   }
 });
