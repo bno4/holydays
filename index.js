@@ -5,14 +5,15 @@ const totalPrice = document.getElementById("total");
 const nightPrice = document.getElementById("nightPrice").innerText;
 
 // setup date of the day
-const date = new Date();
-const today = date.toISOString().split("T")[0];
+const today = new Date().toISOString().split("T")[0];
 
 // on injecte aux inputs l'attribut min et sa valeur par défaut (date du jour)
+
 document.getElementById("start_date").setAttribute("min", `${today}`);
 document.getElementById("end_date").setAttribute("min", `${today}`);
 
-let startTravel, endTravel;
+let startTravel = "";
+let endTravel = "";
 
 // Functions
 const startDate = (value) => {
